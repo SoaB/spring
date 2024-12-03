@@ -11,8 +11,8 @@ const particle = @import("particle.zig").Particle;
 const vec2 = @import("vec.zig");
 
 // ------------------------------------------------
-const MAX_PARTICLES = 1000;
-const MAX_SPRINGS = 1000;
+const MAX_PARTICLES = 100;
+const MAX_SPRINGS = 100;
 pub const SpringEffector = struct {
     var springs: [MAX_SPRINGS]spring = undefined;
     var particles: [MAX_PARTICLES]particle = undefined;
