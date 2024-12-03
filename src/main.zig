@@ -6,7 +6,7 @@ const rl = @cImport({
 const std = @import("std");
 const math = std.math;
 const print = std.debug.print;
-const effect = @import("effect.zig").Effect;
+const springEff = @import("effspring.zig").SpringEffector;
 const rand = @import("rand.zig");
 
 const scrWidth = 800;
@@ -16,13 +16,14 @@ pub fn main() !void {
     rand.init();
     rl.InitWindow(scrWidth, scrHeight, "Noise for FUN");
     rl.SetTargetFPS(60);
-    effect.init();
+    springEff.init(scrWidth, scrHeight);
+    const dt = 1.0 / 60.0;
     while (!rl.WindowShouldClose()) {
         rl.BeginDrawing();
         rl.ClearBackground(rl.BLACK);
         rl.BeginBlendMode(rl.BLEND_ADDITIVE);
-        effect.draw();
-        effect.update();
+        springEff.draw();
+        springEff.update(dt);
         rl.EndBlendMode();
         rl.EndDrawing();
     }
